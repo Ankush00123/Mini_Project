@@ -4,12 +4,12 @@ import UserPanel from "./UserPanel";
 
 const Dashboard = () => {
 
-    const { isLoggedIn } = useSelector(state => state.user);
+    const { userProfileMounted } = useSelector(state => state.user);
 
     return (
         <div>
-            {!isLoggedIn && <NoUserPanel />}
-            {isLoggedIn && <UserPanel />}
+            {!userProfileMounted && <NoUserPanel />}
+            {userProfileMounted && <UserPanel />}
         </div>
     );
 };

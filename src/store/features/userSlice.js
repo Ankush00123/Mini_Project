@@ -4,16 +4,27 @@ export const userSlice = createSlice(
         name: "user",
         
         initialState: {
-            name: "User1",
-            isLoggedIn: false
+            name: "",
+            userProfileMounted: false
         },
         
         reducers: {
-            addNewUser: (state, action) =>
+            mountNewUser: (state, action) =>
             {
                 const { name } = action.payload;
                 state.name = name;
-                state.isLoggedIn = true;
+                state.userProfileMounted = true;
+            },
+
+            updateUsername: (state, action) =>
+            {
+                if (!state.userProfileMounted) return;
+                state.name = action.payload;
+            },
+
+            importUserState: (state, action) =>
+            {
+                return action.payload;
             }
         }
 
@@ -21,7 +32,9 @@ export const userSlice = createSlice(
 );
 
 export const {
-    addNewUser,
+    mountNewUser,
+    updateUsername,
+    importUserState,
 } = userSlice.actions;
 
 export default userSlice.reducer;

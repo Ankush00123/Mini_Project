@@ -1,4 +1,6 @@
-const createUser = (username) => {
+
+
+export const createUser = (username) => {
     return {
         username,
     };

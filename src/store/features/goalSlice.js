@@ -10,13 +10,16 @@ const goalSlice = createSlice(
         },
 
         reducers: {
-
+            importGoalState: (state, action) =>
+            {
+                return action.payload;
+            }
         },
     }
 );
 
 export const {
-
+    importGoalState
 } = goalSlice.actions;
 
 export default goalSlice.reducer;

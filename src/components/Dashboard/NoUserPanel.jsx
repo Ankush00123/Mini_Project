@@ -1,17 +1,21 @@
 import { useDispatch } from "react-redux";
-import { addNewUser } from "./../../store/features/userSlice";
+import { mountNewUser } from "./../../store/features/userSlice";
+import { addDummySubjects } from "../../utils/subjectUtils";
+import { addDummySession } from "../../store/features/subjectSlice";
 
 const NoUserPanel = () => {
     const dispatch = useDispatch();
 
     const addUserHandler = (userName) => {
-        dispatch(addNewUser({name: userName}));
+        dispatch(mountNewUser({ name: userName }));
+        addDummySubjects(dispatch);
+        dispatch(addDummySession());
     };
 
     return (
         <div>
             <h1>No User Found</h1>
-            <button onClick={() => addUserHandler("user5")}>Add User</button>
+            <button onClick={() => addUserHandler("user")}>Add User</button>
         </div>
     );
 };
