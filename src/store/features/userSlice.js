@@ -25,6 +25,12 @@ export const userSlice = createSlice(
             importUserState: (state, action) =>
             {
                 return action.payload;
+            },
+
+            resetUserState: (state) =>
+            {
+                state.name = "";
+                state.userProfileMounted = false;
             }
         }
 
@@ -35,6 +41,7 @@ export const {
     mountNewUser,
     updateUsername,
     importUserState,
+    resetUserState
 } = userSlice.actions;
 
 export default userSlice.reducer;

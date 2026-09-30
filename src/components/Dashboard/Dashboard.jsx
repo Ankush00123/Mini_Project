@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import NoUserPanel from "./NoUserPanel";
-import UserPanel from "./UserPanel";
+import UserNotOnboarded from "./UserNotOnboarded";
+import UserOnboarded from "./UserOnboarded";
 
 const Dashboard = () => {
 
@@ -8,8 +8,8 @@ const Dashboard = () => {
 
     return (
         <div>
-            {!userProfileMounted && <NoUserPanel />}
-            {userProfileMounted && <UserPanel />}
+            {!userProfileMounted && <UserNotOnboarded />}
+            {userProfileMounted && <UserOnboarded />}
         </div>
     );
 };

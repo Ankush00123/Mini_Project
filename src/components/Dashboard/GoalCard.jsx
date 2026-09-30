@@ -10,9 +10,9 @@ const GoalCard = () => {
                 p-5 mb-5"
         >
             <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl -mr-8 -mt-8" />
-            <h1 className="font-['Lexend'] text-xl font-semibold text-zinc-100 mb-3"><strong>{goal}</strong></h1>
+            <h1 className="font-['Lexend'] text-xl font-semibold text-zinc-100 mb-3"><strong>{goal ? goal : "Goal Not set"}</strong></h1>
             <div className="flex items-center gap-1.5 text-sm text-red-400/90">
-                {deadline}
+                {deadline ? deadline : "deadline not set"}
             </div>
         </div>
     )

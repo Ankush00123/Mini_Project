@@ -48,6 +48,14 @@ const sessionSlice = createSlice(
             updateSelectedSubjectId: (state, action) => {
                 const { subjectId } = action.payload;
                 state.selectedSubjectId = subjectId;
+            },
+
+            resetSessionState: (state) =>
+            {
+                state.isActive = false;
+                state.startTimestamp = 0;
+                state.accumulatedSeconds = 0;
+                state.selectedSubjectId = -1;
             }
         },
     }
@@ -59,7 +67,8 @@ export const {
     endSession,
     pauseSession,
     resumeSession,
-    updateSelectedSubjectId
+    updateSelectedSubjectId,
+    resetSessionState
 } = sessionSlice.actions;
 
 export default sessionSlice.reducer;

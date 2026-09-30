@@ -1,4 +1,5 @@
 import { addNewSubject } from "../store/features/subjectSlice";
+import { mountNewUser } from "../store/features/userSlice";
 
 export const createSubject = (subjectName) => {
     return {
@@ -11,6 +12,7 @@ export const createSubject = (subjectName) => {
 
 export const addDummySubjects = (dispatch) =>
 {
+    dispatch(mountNewUser({ name: "user" }));
     dispatch(addNewSubject({ subject: createSubject("subject1") }));
     dispatch(addNewSubject({ subject: createSubject("subject2") }));
     dispatch(addNewSubject({ subject: createSubject("subject3") }));

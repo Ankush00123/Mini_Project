@@ -55,6 +55,11 @@ const subjectSlice = createSlice(
             importSubjectState: (state, action) =>
             {
                 return action.payload;
+            },
+
+            resetSubjectState: (state) =>
+            {
+                state.subjectList = [];
             }
         }
     }
@@ -64,7 +69,8 @@ export const {
     addNewSubject,
     addSession,
     addDummySession,
-    importSubjectState
+    importSubjectState,
+    resetSubjectState
 } = subjectSlice.actions;
 
 export default subjectSlice.reducer;
