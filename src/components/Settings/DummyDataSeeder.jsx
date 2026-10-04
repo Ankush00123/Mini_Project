@@ -1,6 +1,7 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addDummySubjects } from "../../utils/subjectUtils";
 import { addDummySession } from "../../store/features/subjectSlice";
+import { setDummyUser } from "../../store/features/userSlice";
 
 const DummyDataSeeder = ({ setStatusMessage }) => {
     const dispatch = useDispatch();
@@ -10,6 +11,9 @@ const DummyDataSeeder = ({ setStatusMessage }) => {
             
             addDummySubjects(dispatch);
             dispatch(addDummySession());
+            
+
+            dispatch(setDummyUser());
 
             setStatusMessage({ text: "Dummy data loaded successfully!", type: "success" });
             setTimeout(() => setStatusMessage({ text: "", type: "" }), 4000);

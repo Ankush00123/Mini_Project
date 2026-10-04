@@ -12,13 +12,18 @@ const ImportExport = ({setStatusMessage}) =>
 
     //import export handlers
     const handleExportData = () => {
+        if (!userState.userProfileMounted) {
+            setStatusMessage({ text: "No user profile exist to add export", type: "error" });
+            setTimeout(() => setStatusMessage({ text: "", type: "" }), 4000);
+            return;
+        }
         try {
             exportUserData(userState, goalState, subjectState);
             setStatusMessage({ text: "Backup file exported successfully!", type: "success" });
             setTimeout(() => setStatusMessage({ text: "", type: "" }), 4000);
         } catch (error) {
             setStatusMessage({ text: "Failed to export backup.", type: "error" });
-            setTimeout(() => setStatusMessage({ text: "", type: "" }),4000);
+            setTimeout(() => setStatusMessage({ text: "", type: "" }), 4000);
         }
     };
 

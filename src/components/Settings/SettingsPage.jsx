@@ -9,6 +9,7 @@ import DummyDataSeeder from "./DummyDataSeeder";
 
 const SettingsPage = () => {
     const [statusMessage, setStatusMessage] = useState({ text: "", type: "" });
+    const isDummy = useSelector(state => state.user.isDummy);
 
     const userProfileMounted = useSelector(state => state.user.userProfileMounted);
     return (
@@ -29,13 +30,17 @@ const SettingsPage = () => {
                 </div>
             )}
 
-            <UsernameEdit setStatusMessage={setStatusMessage}/>
+            {/* simple editing the states cards */}
+            {userProfileMounted && <UsernameEdit setStatusMessage={setStatusMessage}/> }
+            {userProfileMounted && <GoalEdit setStatusMessage={setStatusMessage} />}
             
-            <GoalEdit setStatusMessage={setStatusMessage}/>
+            {/* import export functionality */}
             <ImportExport setStatusMessage={setStatusMessage} />
 
-            <DummyDataSeeder setStatusMessage={setStatusMessage}/>
+            {/* if user is not dummy then its shown */}
+            {!isDummy && <DummyDataSeeder setStatusMessage={setStatusMessage}/>}
             
+            {/* only shown if user already exists */}
             {userProfileMounted && <DeleteProfile setStatusMessage={setStatusMessage}/>}
         </div>
     );

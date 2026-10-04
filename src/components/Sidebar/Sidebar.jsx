@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
@@ -7,6 +8,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/40'
         }
     `);
+
+    const { userProfileMounted } = useSelector(state => state.user);
 
     return (
         <>
@@ -45,8 +48,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
                 <nav className="flex flex-col gap-2 mt-2">
                     <NavLink to="/" className={sideBarCss} onClick={() => setIsOpen(false)}>Dashboard</NavLink>
-                    <NavLink to="/subjects" className={sideBarCss} onClick={() => setIsOpen(false)}>Subjects</NavLink>
-                    <NavLink to="/sessions" className={sideBarCss} onClick={() => setIsOpen(false)}>Sessions</NavLink>
+                    {userProfileMounted && <NavLink to="/subjects" className={sideBarCss} onClick={() => setIsOpen(false)}>Subjects</NavLink>}
+                    {userProfileMounted && <NavLink to="/sessions" className={sideBarCss} onClick={() => setIsOpen(false)}>Sessions</NavLink>}
                     <NavLink to="/settings" className={sideBarCss} onClick={() => setIsOpen(false)}>Settings</NavLink>
                 </nav>
             </aside>

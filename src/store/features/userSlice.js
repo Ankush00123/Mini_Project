@@ -5,7 +5,8 @@ export const userSlice = createSlice(
         
         initialState: {
             name: "",
-            userProfileMounted: false
+            userProfileMounted: false,
+            isDummy: false,
         },
         
         reducers: {
@@ -22,15 +23,22 @@ export const userSlice = createSlice(
                 state.name = action.payload;
             },
 
+            setDummyUser: (state) =>
+            {   
+                state.isDummy = true;
+            },
+
             importUserState: (state, action) =>
             {
                 return action.payload;
             },
 
+
             resetUserState: (state) =>
             {
                 state.name = "";
                 state.userProfileMounted = false;
+                state.isDummy = false;
             }
         }
 
@@ -40,6 +48,7 @@ export const userSlice = createSlice(
 export const {
     mountNewUser,
     updateUsername,
+    setDummyUser,
     importUserState,
     resetUserState
 } = userSlice.actions;

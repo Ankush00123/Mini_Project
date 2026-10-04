@@ -35,20 +35,21 @@ const subjectSlice = createSlice(
 
             addDummySession: (state) => {
                 state.subjectList = state.subjectList.map((subject) => {
-                    const offsets = [0, 1, 3, 5]
-                    const durations = [1000, 3600, 800, 5400]
+                    const offsets = [0, 1, 2, 3, 4, 5, 6];
+                    const durations = [ 900, 1800, 2700, 3600, 5400, 7200];
 
                     offsets.forEach((daysAgo, i) => {
-                        const session = createSession(subject.id, formatTime(durations[i]))
+                        const sessionDuration = durations[Math.floor((Math.random() * 6))];
+                        const session = createSession(subject.id, formatTime(sessionDuration));
                         
-                        const date = new Date()
-                        date.setDate(date.getDate() - daysAgo)
-                        session.date = date.toISOString().split('T')[0]
+                        const date = new Date();
+                        date.setDate(date.getDate() - daysAgo);
+                        session.date = date.toISOString().split('T')[0];
 
-                        subject.sessions.push(session)
+                        subject.sessions.push(session);
                     })
 
-                    return subject
+                    return subject;
                 })
             },
 
